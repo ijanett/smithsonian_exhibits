@@ -8,9 +8,11 @@ class Scraper
 
     def self.scrape_exhibits
         elements_arr = self.open_page.css(".exhibit-teaser__second")
-    
-            # i = 0
-        elements_arr.each do |element|
+        elements_arr
+    end
+
+    def self.create_exhibits
+        self.scrape_exhibits.each do |element|
             name = element.css("h2").map(&:text)[0]
             if element.css("span").text.split(" | ")[1] == nil
                 category = element.css("span.exhibit-teaser__subtitle").text.split(" – ")[0]
@@ -23,12 +25,19 @@ class Scraper
             Exhibit.new(name, category, floor)
             # i += 1
         end
-binding.pry
+# binding.pry
     end
 
     def self.scrape_descriptions
-        descriptions_arr = self.open_page.css("p").map(&:text)
+        descriptions = self.open_page.css(".exhibit-teaser__text")
+
+        descriptions.each do |description|
+            Exhibit.description = description
+        end
+        # descriptions_arr = self.open_page.css("p").map(&:text)
+#  binding.pry
     end
         #parse out the elemnts that have the data we want 
         #create instances of Category, Floor, Exhibit with that data 
+       
 end

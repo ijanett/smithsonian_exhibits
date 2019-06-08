@@ -21,7 +21,17 @@ class Floor
 		end
 	end
 
-	def self.find_or_create_by
-	#create self.find_or_create_by methods class method 
+	def self.create(name, exhibit= nil, floor= nil)
+		floor = self.new(name)
+		floor.save
+		floor
+	end
+
+	def self.find_by_name(name)
+		all.find{|category| name == category.name}
+	end
+
+	def self.find_or_create_by_name(name)
+		find_by_name(name) || self.create(name)
 	end
 end

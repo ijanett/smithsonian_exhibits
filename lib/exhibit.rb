@@ -1,9 +1,10 @@
+require 'pry'
 
 class Exhibit
 
 	# an exhibit belongs to a floor and a category
 
-	attr_accessor :name, :category, :description, :things_to_do
+	attr_accessor :name, :category, :description
 	
 	@@all = []
 
@@ -11,23 +12,21 @@ class Exhibit
 		@name = name
 		@category = category
 		@floor = floor
-		@@all << self
-	end
-	
-	def self.description
-		# Scraper.self.scrape_descriptions
-		
-		# descriptions_arr.each do |description|
-		# 	@description = description
-		# end
-	end
+		@@all << self unless @@all.include?(self)
+	end	
 
-	def things_to_do
-		# @things_to_do ||= 
+	def self.description
+		@description = description
 	end
 	
 	def self.all
 		@@all
 	end
 
+	def self.print_all
+		all.each_with_index do |exhibit, index|
+			puts "#{index+1}.  #{exhibit.name}"
+		end
+	end
+# binding.pry
 end
