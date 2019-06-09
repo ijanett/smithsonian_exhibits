@@ -42,10 +42,23 @@ class Scraper
         floors_arr.uniq!
 
         Floor.create_from_array(floors_arr)
-        binding.pry
+        # binding.pry
     end
 
-    
+    def self.scrape_categories
+        categories_arr = []
+        
+        elements_arr = self.open_page.css(".exhibit-teaser__second")
+        elements_arr.each do |element|
+            name = element.css("span").text.split(" | ")[1].split(" ").map{|word| word.capitalize}.join(" ")
+
+            categories_arr << name
+        end
+        categories_arr.uniq!
+
+        Category.create_from_array(categories_arr)
+        # binding.pry
+    end
 
         #parse out the elemnts that have the data we want 
         #create instances of Category, Floor, Exhibit with that data     

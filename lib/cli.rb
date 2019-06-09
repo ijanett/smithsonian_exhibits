@@ -3,7 +3,7 @@ require 'colorize'
 class SmithsonianExhibitsCLI
 
 	def run
-		Scraper.scrape_floors
+		Scraper.scrape_categories
 		puts "\n\t Welcome to the Smithsonian National Museum Exhibits!".upcase.blue.bold + " 🏛 "
 		puts "__________________________________________________________________________".blue.bold
 		# sleep 2
