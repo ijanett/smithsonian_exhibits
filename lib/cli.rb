@@ -8,14 +8,13 @@ class SmithsonianExhibitsCLI
 	end
 
 	def run
-		puts "\n\t Welcome to the Smithsonian National Museum Exhibits!".upcase.blue.bold + " 🏛 "
+		puts "\n\t\tWelcome to the Smithsonian Exhibits App!".upcase.blue.bold + " 🏛 "
 		sleep 2
 		menu
 		goodbye
 	end
 
 	def menu
-		# input = nil
 		puts "____________________________________________________________________________".blue.bold
 		puts "\nTo get more info on an exhibit, please select an exhibit from 1-21:\n\n"
 		
@@ -26,11 +25,12 @@ class SmithsonianExhibitsCLI
 		until @input.downcase == "exit"
 			if @input.to_i.between?(1, Exhibit.all.length)
 				select_exhibit
-				puts "\nTo go back to the main menu, enter 'back'. To quit, enter 'exit'.\n\n"	
+				back		
 			elsif @input == "back"
-				back
+				menu
 			else
-				puts "\nInvalid entry. Please enter a valid option or enter 'exit'.\n\n"
+				puts "\nInvalid entry. Please enter a valid option.\n"
+				back
 			end
 			
 			goodbye if @input.downcase == "exit"
@@ -40,7 +40,7 @@ class SmithsonianExhibitsCLI
 	end
 
 	def back
-		menu
+		puts "\nTo go back to the main menu, enter 'back'. To quit, enter 'exit'.\n\n"
 	end
 
 	def list_exhibits
@@ -60,14 +60,14 @@ class SmithsonianExhibitsCLI
 
 		puts "____________________________________________________________________________".blue.bold
 		puts "\nExhibit name: ".upcase.blue.bold + " #{selected_exhibit.name}".light_red.bold
-		puts "\nLocated on: ".upcase.blue.bold + "#{selected_exhibit.floor}  | " + "Exhibit category: ".upcase.blue.bold + "#{selected_exhibit.category}"
+		puts "\nLocated on: ".upcase.blue.bold + "#{selected_exhibit.floor}  | " + "Category: ".upcase.blue.bold + "#{selected_exhibit.category}"
 		puts "\nExhibit description: ".upcase.blue.bold + "\n#{selected_exhibit.description}"
 		puts "\nExhibit url: ".upcase.blue.bold + "\n#{BASE_URL}#{selected_exhibit.url}"
 		puts "____________________________________________________________________________".blue.bold
 	end
 
 	def goodbye
-		puts "\nThank you for stopping by!".bold + " 🐘 🦋 🌿 🕷 🐋 🦖 \n\n"
+		puts "\nThank you for stopping by!".bold + " 🐘 🦋 🌿 🕷 🐋 🦖\n\n"
 		exit
 	end
 end
