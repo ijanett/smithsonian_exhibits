@@ -33,35 +33,49 @@ class Scraper
 # binding.pry
     end
 
-    def self.scrape_floors
-        floors_arr = []
+#     def self.add_exhibit_url
+#         exhibit_hash = {}
 
-        elements_arr = self.open_page.css(".exhibit-teaser__second")
-        elements_arr.each do |element|
-            name = element.css("span").text.split(" | ")[0].split(" ").map{|word| word.capitalize}.join(" ")
+#         exhibit_elements_arr = self.open_page.css(".exhibit-teaser a")
+#         exhibit_elements_arr.each do |element|
+#             # url = 
+# # binding.pry
+#             exhibit_hash[:url] = element.attr("href").text
+#         end
+#         exhibit_hash
+#         Exhibit.add_attribute(exhibit_hash)
+# # binding.pry
+#     end
 
-            floors_arr << name
-        end
-        floors_arr.uniq!
+#     def self.scrape_floors
+#         floors_arr = []
 
-        Floor.create_from_array(floors_arr)
-# binding.pry
-    end
+#         elements_arr = self.open_page.css(".exhibit-teaser__second")
+#         elements_arr.each do |element|
+#             name = element.css("span").text.split(" | ")[0].split(" ").map{|word| word.capitalize}.join(" ")
 
-    def self.scrape_categories
-        categories_arr = []
+#             floors_arr << name
+#         end
+#         floors_arr.uniq!
+
+#         Floor.create_from_array(floors_arr)
+# # binding.pry
+#     end
+
+#     def self.scrape_categories
+#         categories_arr = []
         
-        elements_arr = self.open_page.css(".exhibit-teaser__second")
-        elements_arr.each do |element|
-            name = element.css("span").text.split(" | ")[1].split(" ").map{|word| word.capitalize}.join(" ")
+#         elements_arr = self.open_page.css(".exhibit-teaser__second")
+#         elements_arr.each do |element|
+#             name = element.css("span").text.split(" | ")[1].split(" ").map{|word| word.capitalize}.join(" ")
 
-            categories_arr << name
-        end
-        categories_arr.uniq!
+#             categories_arr << name
+#         end
+#         categories_arr.uniq!
 
-        Category.create_from_array(categories_arr)
-# binding.pry
-    end
+#         Category.create_from_array(categories_arr)
+# # binding.pry
+#     end
         #parse out the elemnts that have the data we want 
         #create instances of Category, Floor, Exhibit with that data     
 end

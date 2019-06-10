@@ -4,7 +4,7 @@ class Exhibit
 
 	# an exhibit belongs to a floor and a category
 
-	attr_accessor :name, :category, :floor, :description
+	attr_accessor :name, :category, :floor, :description, :url
 	
 	@@all = []
 
@@ -19,6 +19,12 @@ class Exhibit
 		exhibits_arr.each{|exhibit| Exhibit.new(exhibit)}
 	end
 	
+	# def self.add_attribute(exhibit_hash)
+	# 	exhibit_hash.each do |k, v|
+	# 		self.send(("#{k}="), v)
+	# 	end
+	# end
+
 	def self.all
 		@@all
 	end
@@ -26,6 +32,4 @@ class Exhibit
 	def self.find(input)
 		self.all[input.to_i-1]
 	end
-
-# binding.pry
 end

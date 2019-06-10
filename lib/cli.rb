@@ -5,13 +5,14 @@ class SmithsonianExhibitsCLI
 
 	def initialize
 		Scraper.scrape_exhibits
+		# Scraper.add_exhibit_url
 		# binding.pry
 	end
 
 	def run
 		puts "\n\t Welcome to the Smithsonian National Museum Exhibits!".upcase.blue.bold + " 🏛 "
 		puts "__________________________________________________________________________".blue.bold
-		# sleep 2
+		sleep 2
 		menu
 		goodbye
 	end
@@ -26,17 +27,19 @@ class SmithsonianExhibitsCLI
 		@input = gets.strip.chomp
 
 		until @input == "exit"
+			
+			
 			if @input.to_i.between?(1, Exhibit.all.length)
 				select_exhibit
 				menu
 			else
 				puts "Invalid entry. Please enter a valid option or enter 'exit'."
 			end
+			
+			goodbye if @input == "exit"
+			
 			@input = gets.strip.chomp
-
-			# if @input == 'exit'
-			# 	break
-			# end
+			
 		end
 	end
 
@@ -49,14 +52,17 @@ class SmithsonianExhibitsCLI
 	def select_exhibit
 		selected_exhibit = Exhibit.find(@input)
 
-		puts "#{selected_exhibit.name}:".light_red.bold
-		puts "\n#{selected_exhibit.floor}  |  #{selected_exhibit.category}"
-		puts "\n#{selected_exhibit.description}"
+		puts "____________________________________________________________________________".blue.bold
+		puts "\nExhibit name: ".blue.bold + " #{selected_exhibit.name}".light_red.bold
+		puts "\nLocated on: ".blue.bold + "#{selected_exhibit.floor}  | " + "Exhibit category: ".blue.bold + "#{selected_exhibit.category}"
+		puts "\nExhibit description: ".blue.bold + "\n#{selected_exhibit.description}"
+		# puts "\nExhibit url: ".bold + "\n#{selected_exhibit.url}"
 		puts "____________________________________________________________________________".blue.bold
 	end
 
 	def goodbye
-		puts "Thank you for stopping by!" 
+		puts "\n\nThank you for stopping by!".bold + " 🐘 🌿 🦋 🕷 🐋 🦖 \n\n"
+		exit
 	end
 
 	# def list_by_category
