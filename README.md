@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-Run: ```sm_exhibits``` and follow the prompts.
+Run:
+ ```sm_exhibits``` 
+ and follow the prompts.
 
 ## Development
 
