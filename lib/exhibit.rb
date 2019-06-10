@@ -1,8 +1,4 @@
-require 'pry'
-
 class Exhibit
-
-	# an exhibit belongs to a floor and a category
 
 	attr_accessor :name, :category, :floor, :description, :url
 	
@@ -19,12 +15,6 @@ class Exhibit
 		exhibits_arr.each{|exhibit| Exhibit.new(exhibit)}
 	end
 	
-	# def self.add_attribute(exhibit_hash)
-	# 	exhibit_hash.each do |k, v|
-	# 		self.send(("#{k}="), v)
-	# 	end
-	# end
-
 	def self.all
 		@@all
 	end

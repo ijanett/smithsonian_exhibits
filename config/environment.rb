@@ -3,10 +3,8 @@ require 'nokogiri'
 require 'pry'
 
 require_relative '../lib/smithsonian_exhibits/version.rb'
-require_relative '../lib/category.rb'
 require_relative '../lib/exhibit.rb'
 require_relative '../lib/scraper.rb'
-require_relative '../lib/floor.rb'
 require_relative '../lib/cli.rb'
 
 # module SmithsonianExhibits

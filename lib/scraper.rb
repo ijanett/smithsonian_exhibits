@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'pry'
+# require 'pry'
 
 class Scraper 
 
@@ -20,7 +20,7 @@ class Scraper
             description = info_holder.css(".exhibit-teaser__text p").map(&:text)[0]
             url_holder = element.css(".exhibit-teaser__first a").attr("href")
             url = url_holder.value
-# binding.pry
+
             exhibit_info = {
                 :name => name,
                 :category => category,
@@ -32,40 +32,5 @@ class Scraper
             exhibits_arr << exhibit_info    
         end
         Exhibit.create_from_array(exhibits_arr)
-# binding.pry
     end
-
-    
-
-#     def self.scrape_floors
-#         floors_arr = []
-
-#         elements_arr = self.open_page.css(".exhibit-teaser__second")
-#         elements_arr.each do |element|
-#             name = element.css("span").text.split(" | ")[0].split(" ").map{|word| word.capitalize}.join(" ")
-
-#             floors_arr << name
-#         end
-#         floors_arr.uniq!
-
-#         Floor.create_from_array(floors_arr)
-# # binding.pry
-#     end
-
-#     def self.scrape_categories
-#         categories_arr = []
-        
-#         elements_arr = self.open_page.css(".exhibit-teaser__second")
-#         elements_arr.each do |element|
-#             name = element.css("span").text.split(" | ")[1].split(" ").map{|word| word.capitalize}.join(" ")
-
-#             categories_arr << name
-#         end
-#         categories_arr.uniq!
-
-#         Category.create_from_array(categories_arr)
-# # binding.pry
-#     end
-        #parse out the elemnts that have the data we want 
-        #create instances of Category, Floor, Exhibit with that data     
 end

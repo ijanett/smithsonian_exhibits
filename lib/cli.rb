@@ -5,8 +5,6 @@ class SmithsonianExhibitsCLI
 	
 	def initialize
 		Scraper.scrape_exhibits
-		# Scraper.add_exhibit_url
-		# binding.pry
 	end
 
 	def run
@@ -33,7 +31,7 @@ class SmithsonianExhibitsCLI
 			elsif @input == "back"
 				back
 			else
-				puts "Invalid entry. Please enter a valid option or enter 'exit'."
+				puts "\nInvalid entry. Please enter a valid option or enter 'exit'.\n\n"
 			end
 			
 			goodbye if @input.downcase == "exit"
@@ -54,7 +52,7 @@ class SmithsonianExhibitsCLI
 				space = "  "
 			end
 
-			puts "#{space}#{index+1}. #{exhibit.name}"
+			puts "#{space}#{index+1}. #{exhibit.name.squeeze(" ")}"
 		end
 	end
 
@@ -62,10 +60,10 @@ class SmithsonianExhibitsCLI
 		selected_exhibit = Exhibit.find(@input)
 
 		puts "____________________________________________________________________________".blue.bold
-		puts "\nExhibit name: ".blue.bold + " #{selected_exhibit.name}".light_red.bold
-		puts "\nLocated on: ".blue.bold + "#{selected_exhibit.floor}  | " + "Exhibit category: ".blue.bold + "#{selected_exhibit.category}"
-		puts "\nExhibit description: ".blue.bold + "\n#{selected_exhibit.description}"
-		puts "\nExhibit url: ".blue.bold + "\n#{BASE_URL}#{selected_exhibit.url}"
+		puts "\nExhibit name: ".upcase.blue.bold + " #{selected_exhibit.name}".light_red.bold
+		puts "\nLocated on: ".upcase.blue.bold + "#{selected_exhibit.floor}  | " + "Exhibit category: ".upcase.blue.bold + "#{selected_exhibit.category}"
+		puts "\nExhibit description: ".upcase.blue.bold + "\n#{selected_exhibit.description}"
+		puts "\nExhibit url: ".upcase.blue.bold + "\n#{BASE_URL}#{selected_exhibit.url}"
 		puts "____________________________________________________________________________".blue.bold
 	end
 
