@@ -1,6 +1,6 @@
 # SmithsonianExhibits
 
-This gem will pull exhibit information from the Exhibits page of the Smithsonian website, https://naturalhistory.si.edu/exhibits. The user can choose from a list of exhibits and upon choosing, will get data specific to that exhibit of choice. The data provided includes the exhibit's name, floor location, category, and a short description.
+This gem will pull exhibit information from the Exhibits page of the Smithsonian website, https://naturalhistory.si.edu/exhibits. The user can choose from a list of exhibits and upon choosing, will get data specific to the exhibit of choice. The data provided includes the exhibit's name, floor location, category, a short description, and a url for further exhibit details.
 
 ## Installation
 
