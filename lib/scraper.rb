@@ -1,5 +1,4 @@
-require 'nokogiri'
-# require 'pry'
+# require 'nokogiri'
 
 class Scraper 
 
@@ -12,7 +11,6 @@ class Scraper
 
         elements_arr = self.open_page.css(".exhibit-teaser")
         elements_arr.each do |element|
-
             info_holder = element.css(".exhibit-teaser__second")
             name = info_holder.css("h2").map(&:text)[0]
             category = info_holder.css("span").text.split(" | ")[1].split(" ").map{|word| word.capitalize}.join(" ")

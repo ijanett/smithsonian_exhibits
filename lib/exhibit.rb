@@ -1,5 +1,5 @@
 class Exhibit
-
+	
 	attr_accessor :name, :category, :floor, :description, :url
 	
 	@@all = []
