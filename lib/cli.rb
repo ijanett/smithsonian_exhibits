@@ -9,7 +9,6 @@ class SmithsonianExhibitsCLI
 
 	def run
 		puts "\n\t Welcome to the Smithsonian National Museum Exhibits!".upcase.blue.bold + " 🏛 "
-		
 		sleep 2
 		menu
 		goodbye
@@ -17,7 +16,7 @@ class SmithsonianExhibitsCLI
 
 	def menu
 		# input = nil
-		puts "__________________________________________________________________________".blue.bold
+		puts "____________________________________________________________________________".blue.bold
 		puts "\nTo get more info on an exhibit, please select an exhibit from 1-21:\n\n"
 		
 		list_exhibits
