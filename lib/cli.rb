@@ -31,7 +31,9 @@ class SmithsonianExhibitsCLI
 			
 			if @input.to_i.between?(1, Exhibit.all.length)
 				select_exhibit
-				menu
+				puts "To go back to the main menu, enter 'back'. To quit, enter 'exit'."	
+			elsif @input == "back"
+				back
 			else
 				puts "Invalid entry. Please enter a valid option or enter 'exit'."
 			end
@@ -41,6 +43,10 @@ class SmithsonianExhibitsCLI
 			@input = gets.strip.chomp
 			
 		end
+	end
+
+	def back
+		menu
 	end
 
 	def list_exhibits
